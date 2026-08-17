@@ -1,4 +1,4 @@
 #!/bin/sh
-# pii_guard pre-commit hook: tracked in scripts/git-hooks/ so it travels.
+# pii_guard pre-commit hook, tracked in scripts/git-hooks/ so it travels.
 # Wired up via:  python3 scripts/pii_guard.py --install-hook
 python3 scripts/pii_guard.py
