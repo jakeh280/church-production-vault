@@ -25,9 +25,11 @@ Both work the same way for this: you point them at a folder on your computer and
 
 > Set up a Church Production Vault for me in this folder, using the template at https://github.com/jakeh280/church-production-vault
 >
-> Download the template's files directly into this folder, not into a subfolder. Then read `CLAUDE.md` and run the first-run setup interview on me, one topic at a time.
+> Don't use git for this. Download and unpack `https://github.com/jakeh280/church-production-vault/archive/refs/heads/main.tar.gz` so the files land directly in this folder, not in a subfolder. Then read `CLAUDE.md` and run the first-run setup interview on me, one topic at a time.
 
 That's the whole install. The agent pulls down the template, then interviews you for about ten minutes about your church, your room, your team, and how work actually gets approved. It fills in the config, deletes the example content, writes your first real pages, and logs day one. You just answer questions.
+
+The "don't use git" line is deliberate: git isn't installed on a fresh Mac, and asking for it triggers a system popup you don't need. If your agent says it can't download at all, do it yourself in ten seconds: click the green **Code** button at the top of this page, **Download ZIP**, unzip it, drag what's inside into your folder, and then say **set this up for me**.
 
 **Then use it.** Walk out to your booth and take ten photos: the front of the rack, the back of it, the patch panel, the labels, the console, whatever's confusing. Drop them in the `inbox` folder, and say:
 

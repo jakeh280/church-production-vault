@@ -189,6 +189,11 @@ def scan_file(path):
     return hits
 
 
+def in_git_repo():
+    """True if cwd is inside a git work tree. A downloaded vault is not."""
+    return subprocess.run(["git", "rev-parse", "--git-dir"], capture_output=True).returncode == 0
+
+
 def install_hook():
     """Install the pre-commit hook so it TRAVELS with the repo.
 
@@ -202,11 +207,7 @@ def install_hook():
     set, and the guard is silently absent the day the user finally runs `git init`.
     Refuse instead, and say what to do.
     """
-    in_repo = subprocess.run(
-        ["git", "rev-parse", "--git-dir"],
-        capture_output=True,
-    ).returncode == 0
-    if not in_repo:
+    if not in_git_repo():
         print(
             "Not a git repository, so there is no pre-commit stage to guard.\n"
             "This is fine: a downloaded vault works without git. Nothing leaves\n"
@@ -245,6 +246,18 @@ def main():
 
     if args.install_hook:
         sys.exit(0 if install_hook() else 1)
+
+    # Staged mode is meaningless without a repo, and silence would read as "clean".
+    # A downloaded vault has no staged files ever, so scanning them would report an
+    # all-clear without opening a single file: the same lie install_hook used to
+    # tell. Send them to --all, which actually reads the vault.
+    if not args.all and not in_git_repo():
+        print(
+            "Not a git repository, so there are no staged files to scan and this\n"
+            "check has nothing to say. To actually scan the vault's contents, run:\n"
+            "  python3 scripts/pii_guard.py --all"
+        )
+        sys.exit(1)
 
     # Pre-commit (staged) mode: block any staged binary outright before the text
     # scan: a binary can hide secrets the scanner can't read (root cause of the
