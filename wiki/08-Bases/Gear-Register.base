@@ -1,0 +1,76 @@
+filters:
+  and:
+    - note.type == "gear-asset"
+    - '!file.inFolder("wiki/09-Templates")'
+properties:
+  file.name:
+    displayName: File
+  note.asset:
+    displayName: Asset
+  note.manufacturer:
+    displayName: Make
+  note.category:
+    displayName: Category
+  note.status:
+    displayName: Status
+  note.location:
+    displayName: Location
+  note.quantity:
+    displayName: Qty
+  note.acquired:
+    displayName: Acquired
+  note.status_note:
+    displayName: Note
+  note.needs_attention:
+    displayName: Needs Attention
+views:
+  - type: table
+    name: Needs Attention
+    filters:
+      and:
+        - note.needs_attention == true
+    order:
+      - file.name
+      - category
+      - status
+      - status_note
+  - type: table
+    name: Full Register
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - category
+      - asset
+      - status
+      - location
+  - type: table
+    name: Broken / Needs Repair
+    filters:
+      and:
+        - note.status == "broken"
+    order:
+      - file.name
+      - status
+      - asset
+      - location
+  - type: table
+    name: Spares (In Box)
+    filters:
+      and:
+        - note.status == "in-box"
+    order:
+      - file.name
+      - category
+      - asset
+      - location
+  - type: table
+    name: Active
+    filters:
+      and:
+        - note.status == "in-service"
+    order:
+      - file.name
+      - category
+      - asset

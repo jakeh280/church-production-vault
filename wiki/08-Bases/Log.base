@@ -1,0 +1,12 @@
+filters:
+  and:
+    - file.inFolder("wiki/10-Log")
+properties:
+  note.date:
+    displayName: Date
+views:
+  - type: table
+    name: All Entries
+    order:
+      - date
+      - file.name

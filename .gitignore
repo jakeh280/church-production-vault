@@ -1,0 +1,29 @@
+# OS / editor cruft
+.DS_Store
+.trash/
+
+# Python bytecode cache (created when scripts/ modules are imported)
+__pycache__/
+*.pyc
+
+# Obsidian config: ALL of it is per-machine UI state, never vault content.
+# Ignored wholesale so the Obsidian Git plugin (or an agent) can't commit UI churn.
+# Bases (.base) live in wiki/08-Bases/, so nothing version-worthy is lost here.
+.obsidian/
+
+# inbox/: un-distilled SOURCE material, never synced to a remote.
+# inbox holds the raw drops (vendor invoice PDFs, manuals, routing images) that get
+# distilled into wiki/ pages. The durable knowledge lives in wiki/; the originals'
+# authoritative copy lives in their native system (Drive, email, the vendor).
+# Binaries in git are both the highest-risk part (PDFs/images can't be scanned by
+# pii_guard) and the lowest-value (already distilled). inbox is a LOCAL staging area,
+# not a versioned one. Wiki pages' `source: inbox/...` fields remain valid as
+# historical provenance even with the file absent. See CLAUDE.md → "Git".
+#
+# The folder scaffolding (README + the _processed/ dir) IS tracked so a fresh
+# clone actually has an inbox to drop files into. Everything you put in it is not.
+inbox/*
+!inbox/README.md
+!inbox/_processed/
+inbox/_processed/*
+!inbox/_processed/.gitkeep

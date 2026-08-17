@@ -1,0 +1,32 @@
+filters:
+  and:
+    - file.inFolder("wiki/01-Production")
+    - live_doc != true
+    - '!file.inFolder("wiki/09-Templates")'
+formulas:
+  needs_review: if(note.verified.isEmpty(), "⚠️ UNVERIFIED", "✅ " + note.verified)
+properties:
+  note.type:
+    displayName: Type
+  note.status:
+    displayName: Status
+  formula.needs_review:
+    displayName: Verified
+views:
+  - type: table
+    name: Needs Verification
+    filters:
+      and:
+        - note.verified.isEmpty()
+    order:
+      - file.name
+      - type
+  - type: table
+    name: All Operational Pages
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - type
+      - formula.needs_review
+      - file.name

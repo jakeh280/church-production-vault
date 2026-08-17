@@ -1,0 +1,23 @@
+filters:
+  and:
+    - open_questions == true
+    - '!file.inFolder("wiki/09-Templates")'
+formulas:
+  flag: ❓ has open questions
+properties:
+  note.type:
+    displayName: Type
+  note.source:
+    displayName: Source
+  note.verified:
+    displayName: Verified
+  note.updated:
+    displayName: Updated
+views:
+  - type: table
+    name: Open Confirmations
+    order:
+      - file.name
+      - type
+      - source
+      - updated

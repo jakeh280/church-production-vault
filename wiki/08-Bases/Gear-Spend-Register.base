@@ -1,0 +1,49 @@
+filters:
+  and:
+    - note.type == "gear-event"
+    - '!file.inFolder("wiki/09-Templates")'
+properties:
+  file.name:
+    displayName: File
+  note.date:
+    displayName: Date
+  note.kind:
+    displayName: Kind
+  note.asset:
+    displayName: Asset
+  note.vendor:
+    displayName: Vendor
+  note.cost:
+    displayName: Cost
+  note.status_note:
+    displayName: Note
+views:
+  - type: table
+    name: All Spend & Service
+    order:
+      - file.name
+      - date
+      - kind
+      - asset
+      - vendor
+      - cost
+  - type: table
+    name: Purchases
+    filters:
+      and:
+        - note.kind == "purchase"
+    order:
+      - file.name
+      - date
+      - asset
+      - cost
+  - type: table
+    name: Service & Repairs
+    filters:
+      and:
+        - note.kind == "service" || note.kind == "repair" || note.kind == "replace"
+    order:
+      - file.name
+      - date
+      - asset
+      - cost
