@@ -58,7 +58,9 @@ scripts/               Seven maintenance scripts + a pre-commit secret guard
 
 ## Getting started
 
-**1. Get the folder.**
+**1. Get the folder.** Click **Use this template** at the top of this repo to make your own copy with its own clean history. **Make it private.** Then clone it to your machine.
+
+If you'd rather not put it on GitHub at all, that works too. Download the ZIP, or:
 
 ```bash
 git clone https://github.com/jakeh280/church-production-vault.git my-church-vault
