@@ -89,7 +89,8 @@ Before saving, update the existing home rather than adding a duplicate. If a fac
 5. Update the relevant entity and concept pages
 6. Append a bullet to today's `wiki/10-Log/YYYY-MM-DD.md` (create the file if it's the first entry of the day)
 7. **Treat dated source material as historical unless proven current.** Anything more than a few months old should be flagged as potentially stale. Don't assert its contents as current operational state without noting the approximate timeframe or adding an `[!info]` callout. Resolved goals, superseded plans, and old rosters are the common drift sources.
-8. Apply the inbox-file lifecycle below
+8. **Photos count as source material.** Phone photos of a rack, a patch bay, a fixture, a console screen, or a label are a normal and fast way to document a room. Read only what is legibly visible: a half-readable label is not a model number, and a unit recognized by shape is not a confirmed make. Everything you can't literally read goes in a `[!question]` with `open_questions: true`, never into the page as fact. Ingest a set of photos covering one rack or room together, as one page, not one page per photo.
+9. Apply the inbox-file lifecycle below
 
 ### Inbox file lifecycle (after ingest)
 

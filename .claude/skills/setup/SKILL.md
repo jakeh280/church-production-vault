@@ -94,7 +94,9 @@ Do these in order. Tell the user what you're doing as you go.
 
 Do not finish with a summary of what you wrote. Finish by getting them to use it, with one concrete next action:
 
-> Drop a gear manual, a quote, or your last meeting's notes into `inbox/` and tell me to ingest it. That's the whole loop, and the vault is only worth anything once it's been through it a few times.
+> Walk out to the booth and take ten photos: the front of the rack, the back of it, the patch panel, the labels, the console. Drop them in `inbox/` and tell me to ingest. That's the whole loop, and photos are the fastest way to get a room documented, no typing required.
+
+Photos are the best default first ingest because they cost the user nothing but a walk. A manual, a quote, or the last meeting's notes work just as well if they'd rather start at a desk.
 
 If they already mentioned a current project in Block 4, name *that* specifically instead. "You said the lighting console upgrade is in progress, drop the quote in `inbox/` and I'll start the page" beats a generic invitation every time.
 

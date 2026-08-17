@@ -19,6 +19,8 @@ Read everything in `inbox/` that hasn't been processed, or the specific file the
 
 If it's a binary you can't read (a PDF you can't open, a proprietary format), say so plainly rather than guessing at its contents from the filename.
 
+**Photos are first-class source material.** A phone photo of a rack, a patch panel, a fixture label, a console screen, or a serial-number sticker is often the fastest way to get a room documented. Read what is actually legible in the image and nothing more. A label you can half-read is not a model number; a rack unit you recognize by shape is not a confirmed make. Write only what you can literally see, and put everything else in a `[!question]` callout with `open_questions: true` so the user can walk back out and check. Photos are exactly where a confident guess does the most damage, because the guess reads like it came off a nameplate. When several photos cover one rack or one room, ingest them together and describe the layout top to bottom, rather than making a page per photo.
+
 ### 2. Screen it for sensitivity: before anything else
 
 Check the source against **What Never Goes in This Vault** in `CLAUDE.md`. If it contains credentials, personnel notes, giving records, or congregation member data:
