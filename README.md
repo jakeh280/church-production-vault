@@ -1,6 +1,8 @@
 # Church Production Vault
 
-**An AI-readable knowledge base for church production teams.** Drop a manual, a quote, or your meeting notes into a folder, tell an AI agent to ingest it, and get back a structured, cross-linked wiki that answers questions six months later, with citations, and with an honest distinction between what someone confirmed and what the AI guessed.
+**Everything you know about your church's production system stops living in your head.**
+
+Drop a manual, a quote, or your meeting notes into a folder, tell an AI agent to ingest it, and get back a structured, cross-linked wiki that answers questions six months later, with citations, and with an honest distinction between what someone confirmed and what the AI guessed.
 
 It's a folder of Markdown files. No app, no account, no server, no subscription. It works in Obsidian, in any text editor, with Claude Code, Codex, Gemini, Cursor, or a chat window with the folder attached.
 
@@ -10,7 +12,9 @@ Free, MIT licensed, from [Overflow Creative](https://overflowcreative.net).
 
 ## Why this exists
 
-Church production knowledge lives in three places: one person's head, a spreadsheet nobody updates, and a group chat from eight months ago. When that person is out, the room doesn't run. When they leave, it's gone.
+Church production knowledge lives in three places: one person's head, a spreadsheet nobody updates, and a group chat from eight months ago. Mostly the head. When that person is out sick, the room doesn't run right. When they leave, it walks out with them, and the next person rebuilds it by trial and error on a Sunday morning.
+
+That is the actual problem this solves. Not note-taking. Getting the system out of one person's head and into something the whole team can query.
 
 The usual fix is "write documentation," and it usually fails, because documentation goes stale silently, and a wiki nobody trusts is worse than no wiki. So this template is built around the two questions that actually determine whether a page is worth acting on:
 
