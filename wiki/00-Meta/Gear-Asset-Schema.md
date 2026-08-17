@@ -22,7 +22,7 @@ tags: [production, audio, gear]
 asset: <model or short name>
 manufacturer: <make>
 category: audio            # audio / video / lighting / computer / other
-status: in-box             # in-service / spare / in-box / broken / retired
+status: spare              # in-service / spare / broken / retired
 location: <where it physically is>
 quantity: 1
 acquired: YYYY-MM          # optional, month/year if known

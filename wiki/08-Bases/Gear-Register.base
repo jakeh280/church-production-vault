@@ -56,10 +56,10 @@ views:
       - asset
       - location
   - type: table
-    name: Spares (In Box)
+    name: Spares
     filters:
       and:
-        - note.status == "in-box"
+        - note.status == "spare"
     order:
       - file.name
       - category
