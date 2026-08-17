@@ -196,7 +196,26 @@ def install_hook():
     the iMac, already has the file), and we point git at it via core.hooksPath.
     Because core.hooksPath is local config (not cloned), a new machine still runs
     this once during bring-up: `python3 scripts/pii_guard.py --install-hook`.
+
+    A vault that was downloaded rather than cloned has no repo at all. Writing the
+    hook file there and reporting success would be a lie: core.hooksPath never gets
+    set, and the guard is silently absent the day the user finally runs `git init`.
+    Refuse instead, and say what to do.
     """
+    in_repo = subprocess.run(
+        ["git", "rev-parse", "--git-dir"],
+        capture_output=True,
+    ).returncode == 0
+    if not in_repo:
+        print(
+            "Not a git repository, so there is no pre-commit stage to guard.\n"
+            "This is fine: a downloaded vault works without git. Nothing leaves\n"
+            "your machine, because nothing is being committed or synced.\n"
+            "If you want version history and a private backup, run `git init`\n"
+            "here first, then run this command again."
+        )
+        return False
+
     hooks_dir = Path("scripts/git-hooks")
     hooks_dir.mkdir(parents=True, exist_ok=True)
     hook_path = hooks_dir / "pre-commit"
@@ -213,6 +232,7 @@ def install_hook():
     if legacy.exists():
         legacy.unlink()
     print(f"Installed pre-commit hook at {hook_path} and set core.hooksPath=scripts/git-hooks")
+    return True
 
 
 def main():
@@ -224,8 +244,7 @@ def main():
     args = parser.parse_args()
 
     if args.install_hook:
-        install_hook()
-        sys.exit(0)
+        sys.exit(0 if install_hook() else 1)
 
     # Pre-commit (staged) mode: block any staged binary outright before the text
     # scan: a binary can hide secrets the scanner can't read (root cause of the

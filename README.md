@@ -4,29 +4,40 @@
 
 Take photos of your rack. Drop in a manual, a quote, your meeting notes. Tell an AI agent to ingest it, and get back a structured, cross-linked wiki that answers questions six months later, with citations, and with an honest distinction between what someone confirmed and what the AI guessed.
 
-It's a folder of Markdown files. No app, no account, no server, no subscription. Free, MIT licensed, from [Overflow Creative](https://overflowcreative.net).
+It's a folder of plain text files on your computer. Nothing to sign up for, nothing to subscribe to, no server, no company holding your stuff. Free, MIT licensed, from [Overflow Creative](https://overflowcreative.net).
 
 ---
 
 ## Start here
 
-You don't need to know how any of this works. You need an AI coding agent that can run commands in a folder on your computer, Claude Code, Codex, Gemini CLI, or Cursor. Open a terminal, go to wherever you keep your stuff (`cd ~/Documents`), start the agent there, and paste this:
+You don't need to know how any of this works, and you don't need to touch a terminal. You need one app, whichever you already have:
 
-> Set up a Church Production Vault for me in a new folder called `my-church-vault`, using the template at https://github.com/jakeh280/church-production-vault
+- **Claude Code**, the desktop app
+- **ChatGPT**, the desktop app (the Codex side of it)
+
+Both work the same way for this: you point them at a folder on your computer and tell them what you want in plain English.
+
+**1. Make an empty folder.** In Finder, wherever you keep things. Documents is fine. Right-click, New Folder, call it `church-vault`.
+
+**2. Open that folder in the app.** Claude Code: **Select folder**, pick it. ChatGPT: open **Codex**, add it as a local project.
+
+**3. Paste this in and hit enter:**
+
+> Set up a Church Production Vault for me in this folder, using the template at https://github.com/jakeh280/church-production-vault
 >
-> Clone it into that folder, replace the template's git history with a fresh one of my own, then run `python3 scripts/pii_guard.py --install-hook` inside it. After that, read `CLAUDE.md` in that folder and run the first-run setup interview on me, one topic at a time.
+> Download the template's files directly into this folder, not into a subfolder. Then read `CLAUDE.md` and run the first-run setup interview on me, one topic at a time.
 
-That's the whole install. The agent does the setup, then interviews you for about ten minutes about your church, your room, your team, and how work actually gets approved. It fills in the config, deletes the example content, writes your first real pages, and logs day one.
+That's the whole install. The agent pulls down the template, then interviews you for about ten minutes about your church, your room, your team, and how work actually gets approved. It fills in the config, deletes the example content, writes your first real pages, and logs day one. You just answer questions.
 
-**Then use it.** Walk out to your rack and take ten photos: the front of the rack, the back of it, the patch panel, the labels, the console, whatever's confusing. Drop them in `inbox/`, and say:
+**Then use it.** Walk out to your booth and take ten photos: the front of the rack, the back of it, the patch panel, the labels, the console, whatever's confusing. Drop them in the `inbox` folder, and say:
 
 > ingest
 
-That's the loop, and it's the fastest way to get a room documented. The agent reads what's actually legible in the photos, writes the pages, and flags what it couldn't read clearly instead of guessing at a model number. Same loop for a PDF manual, a vendor quote, or your notes from a Tuesday meeting.
+That's the loop, and it's the fastest way to get a room documented, no typing required. The agent reads what's actually legible in the photos, writes the pages, and flags what it couldn't read clearly instead of guessing at a model number. Same loop for a PDF manual, a vendor quote, or your notes from a Tuesday meeting.
 
-**Worth doing, either now or later:** open the folder in [Obsidian](https://obsidian.md) as a vault. Everything works without it, but Obsidian is what makes the links clickable, the callouts render, and the database views show up as sortable, filterable tables. Bases need Obsidian 1.9.10 or newer.
+**Worth doing, now or later:** open the folder in [Obsidian](https://obsidian.md) as a vault. Everything works without it, but Obsidian is what makes the links clickable, the callouts render, and the database views show up as sortable, filterable tables. Bases need Obsidian 1.9.10 or newer.
 
-**One more, when you're ready:** the setup above lives only on your laptop, which means a dead laptop takes it with it. Pushing it to a **private** GitHub repo is the backup, and it's how the rest of your team gets a copy. Ask the agent to walk you through it. Private, always. Nothing about a production vault belongs in a public repo.
+**Later, when you want a backup:** this lives only on your laptop, so a dead laptop takes it with it. Ask your agent to put it in a **private** GitHub repo and it'll walk you through it, secret guard and all. Private, always. Nothing about a production vault belongs in a public one.
 
 ---
 
@@ -45,6 +56,8 @@ Blank is an honest answer. A page that says "nobody has checked this" is more us
 
 The rest of the design follows from one rule: **every fact lives in exactly one place, and every other page links to it.** Two pages that both state the gain structure are two pages that will disagree the day one gets updated.
 
+The bones of this are Andrej Karpathy's [LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) pattern: raw sources in, a compiled wiki out, three operations, ingest, query, and lint. This is that pattern pointed at one specific room, with the parts a production booth actually needs, gear lifecycle, spend history, verification, and a hard line around what a church must never file in a folder like this.
+
 ---
 
 ## What it does
@@ -53,7 +66,7 @@ The rest of the design follows from one rule: **every fact lives in exactly one 
 
 **Answer**: you ask a question. It answers from your pages with citations, not from general knowledge about church audio. When the vault doesn't know, it says so and creates the stub. Every unanswered question becomes the backlog for what to document next.
 
-Asking doesn't need a terminal or any install. Once the vault is set up, anyone on the team with a copy of the folder can attach it to a chat window and ask, which is the point: you built it, but you're not the only one who can use it.
+Asking takes no setup at all. Once the vault exists, anyone on the team with a copy of the folder can attach it to a chat window and ask it questions, which is the whole point: you built it, but you're not the only one who can use it.
 
 **Lint**: periodically, it checks itself: contradictions between pages, the same value typed in two places, claims with no source, pages overdue for re-verification, orphans, and counts hardcoded into prose that will silently go stale.
 
@@ -92,7 +105,9 @@ Read this before you put anything in. It's a hard boundary, not a guideline, and
 
 **Equipment spend is a different thing and it belongs here.** What a console cost, what a repair was quoted at, which vendor invoiced it, when a service agreement renews: that is equipment history, and it is what the spend register is for. The line is the subject, not the dollar sign.
 
-This is written into `CLAUDE.md`, so the agent enforces it during ingest: sensitive source files get distilled into a safe page and then **deleted**, not archived. `scripts/pii_guard.py` backstops the credential half at commit time, and `inbox/` is gitignored, so nothing you drop in it is ever synced anywhere.
+This is written into `CLAUDE.md`, so the agent enforces it during ingest: sensitive source files get distilled into a safe page and then **deleted**, not archived.
+
+Until you deliberately sync it somewhere, none of this leaves your computer, so the boundary is mostly about what's fair to your team and your congregation. The day you do sync it, two guards come on automatically: `inbox/` is never included, and a secret scanner checks every commit and blocks anything that looks like a credential or a binary it can't read inside.
 
 ---
 
@@ -131,7 +146,9 @@ Use it to stop re-deriving the same answer every six months. Don't use it to han
 
 ## Credits
 
-Built by [Jake Hill](https://overflowcreative.net), a church Production Director running this system on a real production vault daily. Extracted and generalized so other teams don't have to invent it.
+Built on [Andrej Karpathy's LLM wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), which is where the three-layer structure and the ingest / query / lint loop come from. If you want the general idea in its purest form, read that. This repo is the church production build of it.
+
+Assembled by [Jake Hill](https://overflowcreative.net), a church Production Director running this system on a real production vault daily. Extracted and generalized so other teams don't have to invent it.
 
 Issues and pull requests welcome. If you adapt it for your room and something in the structure fought you, that's worth an issue. The friction you hit is the next version.
 

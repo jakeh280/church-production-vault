@@ -281,7 +281,9 @@ Rule of thumb: **the cheap tier moves bytes and reports state; it does not decid
 
 ## Git: version control
 
-This vault is a git repo. Git is the structural change history; the `wiki/10-Log/` files are the semantic narrative. Both travel together when the vault moves to another machine.
+**This section applies only once the vault is a git repo.** Many vaults start life as a plain downloaded folder with no git at all, and that is a perfectly valid way to run one: the `wiki/10-Log/` files still carry the narrative, and nothing here is required for ingest, query, or lint to work. Check for a `.git` directory before assuming; if there isn't one, skip the commit steps rather than running `git init` on your own initiative. Offer it instead, and explain the tradeoff below.
+
+Where git *is* set up, it is the structural change history and the log files are the semantic narrative. Both travel together when the vault moves to another machine.
 
 > [!warning] The confidentiality boundary, read before adding a remote
 > A **private** GitHub repo is not "nowhere". It lives on a third party's servers, and git history is permanent. Two hard rules keep the boundary clean:
@@ -290,7 +292,7 @@ This vault is a git repo. Git is the structural change history; the `wiki/10-Log
 >
 > If you sync this vault to a remote, **make it private.** Nothing about a production vault belongs in a public repo.
 
-**Fresh-clone / new-machine bring-up:** run `python3 scripts/pii_guard.py --install-hook` once. The hook script is tracked in `scripts/git-hooks/` so it travels with the repo; that command wires it up via `core.hooksPath`, which is local config and is *not* cloned, hence the one-time step. Without it, the binary/secret pre-commit gate is silently absent.
+**Bring-up on any machine, and the moment git is first set up:** run `python3 scripts/pii_guard.py --install-hook` once. The hook script is tracked in `scripts/git-hooks/` so it travels with the repo; that command wires it up via `core.hooksPath`, which is local config and is *not* cloned, hence the one-time step. Without it, the binary/secret pre-commit gate is silently absent.
 
 **Commit after every substantive session**: any ingest, any page created or updated, any lint fix, any schema change, any inbox lifecycle action. A session that only reads or answers questions does not need a commit.
 

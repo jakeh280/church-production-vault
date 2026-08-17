@@ -86,7 +86,7 @@ Do these in order. Tell the user what you're doing as you go.
 
 6. **Run the checks**, `python3 scripts/health.py` and `python3 scripts/link_check.py`, and fix anything they surface.
 
-7. **Commit**, if the vault is a git repo: `git add wiki/ CLAUDE.md && git commit -m "setup: initialize vault for <church>"`.
+7. **Commit, only if the vault is already a git repo**: `git add wiki/ CLAUDE.md && git commit -m "setup: initialize vault for <church>"`. Most new vaults are a plain downloaded folder with no `.git` at all, which is fine and changes nothing about how the vault works. Don't run `git init` unprompted. Mention once, at the end, that they can ask you later to set up version history and a private backup, and leave it there. Setup day is not the day to teach git.
 
 ---
 
