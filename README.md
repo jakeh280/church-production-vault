@@ -57,7 +57,7 @@ scripts/               Seven maintenance scripts + a pre-commit secret guard
 **1. Get the folder.**
 
 ```bash
-git clone https://github.com/OWNER/church-production-vault.git my-church-vault
+git clone https://github.com/jakeh280/church-production-vault.git my-church-vault
 cd my-church-vault
 rm -rf .git && git init
 ```
