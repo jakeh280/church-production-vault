@@ -86,7 +86,7 @@ It reads the first-run block in `CLAUDE.md`, interviews you for about ten minute
 
 ---
 
-## The three things it does
+## What it does
 
 **Ingest**: you drop source material in `inbox/`. The agent reads it, tells you what it found before writing anything, updates the pages it affects (rather than creating a fifth page about the same console), updates the index, logs the action, and archives or deletes the original depending on what's in it.
 
@@ -102,10 +102,12 @@ Read this before you put anything in. It's a hard boundary, not a guideline, and
 
 - **Personnel or HR files**: reviews, discipline, hiring notes, volunteer performance or attendance records
 - **Pastoral care or counseling notes**: anything shared in confidence, ever
-- **Financial records, giving, or donor information**
-- **Staff salary or compensation information**
+- **Giving, donor, and offering records** of any kind
+- **Staff salary or compensation information**, and anything out of payroll
 - **Any personal congregation member data**: names attached to circumstances, prayer requests, contact lists
 - **Live credentials**: passwords, keys, tokens, door codes, Wi-Fi keys. A page may say *where* a credential lives; it must never hold the value
+
+**Equipment spend is a different thing and it belongs here.** What a console cost, what a repair was quoted at, which vendor invoiced it, when a service agreement renews: that is equipment history, and it is what the spend register is for. The line is the subject, not the dollar sign.
 
 This is written into `CLAUDE.md`, so the agent enforces it during ingest: sensitive source files get distilled into a safe page and then **deleted**, not archived. `scripts/pii_guard.py` backstops the credential half at commit time.
 
@@ -133,12 +135,12 @@ This is written into `CLAUDE.md`, so the agent enforces it during ingest: sensit
 
 Two things to be careful with:
 
-- `Verification-Dashboard.base` and `Log.base` filter on hardcoded folder paths. If you renumber or rename a folder, update those filters in the same edit. A stale filter fails silently and just shows an empty table.
+- `Log.base` filters on a hardcoded folder path. If you renumber or rename `10-Log`, update that filter in the same edit. A stale filter fails silently and just shows an empty table. The other four Bases filter on frontmatter, so they survive any reorganization.
 - If you add a rule, add it to `CLAUDE.md` rather than telling the agent in chat. Chat is forgotten; the file travels.
 
 ---
 
-## A caveat worth stating plainly
+## What it won't do
 
 This is a memory aid, not an operator. It does not replace training, and it does not replace knowing your room. A page can be wrong. A page can be confidently, fluently wrong, which is worse. That's exactly why `verified:` exists and why only a human sets it. The vault is designed to tell you what it hasn't checked.
 
@@ -148,7 +150,7 @@ Use it to stop re-deriving the same answer every six months. Don't use it to han
 
 ## Credits
 
-Built by [Jake Hill](https://overflowcreative.net), Production Director at a two-service church, running this system on a real production vault daily. Extracted and generalized so other teams don't have to invent it.
+Built by [Jake Hill](https://overflowcreative.net), a church Production Director running this system on a real production vault daily. Extracted and generalized so other teams don't have to invent it.
 
 Issues and pull requests welcome. If you adapt it for your room and something in the structure fought you, that's worth an issue. The friction you hit is the next version.
 

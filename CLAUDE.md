@@ -322,10 +322,15 @@ This is a hard boundary, not a guideline. An AI-readable folder that syncs betwe
 
 - **Personnel or HR files**: reviews, discipline, hiring notes, volunteer performance or attendance records
 - **Pastoral care or counseling notes**: anything shared in confidence, ever
-- **Financial records or donor/giving information**
-- **Staff salary or compensation information**
+- **Giving, donor, and offering records** of any kind
+- **Staff salary or compensation information**, and anything out of payroll
 - **Anything with personal congregation member data**: names attached to circumstances, prayer requests, contact lists
 - **Live credentials**: passwords, API keys, tokens, door codes, Wi-Fi keys. A page may say *where* a credential lives ("in the team password manager"); it must never contain the value.
+
+> [!info] Equipment spend is in scope, church finances are not
+> What a console cost, what a repair was quoted at, which vendor invoiced it, when a service agreement renews: that is **equipment history**, it belongs here, and it is what `type: gear-event` pages and [[Gear-Spend-Register]] exist for. Knowing what a unit cost and when is exactly the context that makes a repair-or-replace decision possible three years later.
+>
+> The line is the **subject, not the dollar sign.** Anything about what the church receives or what people are paid stays out: giving, donations, pledges, departmental budgets, payroll, salaries, reimbursements to individuals. If a purchase document carries both, keep the equipment facts and purge the original.
 
 If a source file in `inbox/` contains any of the above, ingest only the safe distillate and **delete the original**, see the inbox lifecycle. Log the purge.
 

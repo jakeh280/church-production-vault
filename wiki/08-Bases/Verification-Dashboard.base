@@ -1,6 +1,6 @@
 filters:
   and:
-    - file.inFolder("wiki/01-Production")
+    - note.type == "procedure" || note.type == "gear" || note.type == "gear-asset" || note.type == "reference"
     - live_doc != true
     - '!file.inFolder("wiki/09-Templates")'
 formulas:

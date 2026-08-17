@@ -80,11 +80,14 @@ views:
       - note.verified
 ```
 
-**If you rename or renumber a folder, update the Base filters in the same edit.** `Verification-Dashboard.base` and `Log.base` both filter on a hardcoded path, and a stale filter fails silently. The view just shows nothing.
+**`Log.base` is the only Base that filters on a folder path.** If you rename or renumber `10-Log`, update that filter in the same edit, because a stale filter fails silently and the view just shows nothing. Every other Base filters on frontmatter (`type`, `open_questions`, `live_doc`), so reorganizing folders does not break them.
 
 ## Gear events: spend & service log
 
 Every time money is spent on gear, a **purchase** *or* a **repair / service / replacement**, create a `type: gear-event` page in `01-Production/Gear-Events/`, filename `YYYY-MM-DD-Short-Title.md`. Frontmatter: `kind` (purchase / service / repair / replace), `date`, `cost`, `vendor`, `asset` (a wikilink to the gear-asset page if one exists).
+
+> [!info] Recording what gear cost is in scope
+> Equipment purchases, repairs, and vendor invoices belong in the vault. Giving, donations, departmental budgets, payroll, and salaries never do. The line is the subject, not the dollar sign. See `CLAUDE.md` → What Never Goes in This Vault.
 
 The event page holds the **queryable money and date**; the **narrative** of what happened stays in the asset page's `## Lifecycle` section. Don't duplicate the prose. Link. [[Gear-Spend-Register]] aggregates all events chronologically, and answers both "what did we spend on gear this year" and "what's this unit's full service history" from one source.
 
