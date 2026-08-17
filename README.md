@@ -53,6 +53,8 @@ The rest of the design follows from one rule: **every fact lives in exactly one 
 
 **Answer**: you ask a question. It answers from your pages with citations, not from general knowledge about church audio. When the vault doesn't know, it says so and creates the stub. Every unanswered question becomes the backlog for what to document next.
 
+Asking doesn't need a terminal or any install. Once the vault is set up, anyone on the team with a copy of the folder can attach it to a chat window and ask, which is the point: you built it, but you're not the only one who can use it.
+
 **Lint**: periodically, it checks itself: contradictions between pages, the same value typed in two places, claims with no source, pages overdue for re-verification, orphans, and counts hardcoded into prose that will silently go stale.
 
 ---

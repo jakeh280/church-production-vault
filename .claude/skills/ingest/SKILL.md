@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: Absorb source material from inbox/ into the wiki, read it, discuss the takeaways, write or update pages, update the index, log the action, and archive or purge the original. Use whenever the user drops a file in inbox/ or says "ingest this".
+description: Absorb source material from inbox/ into the wiki, photos of a rack or gear, manuals, quotes, meeting notes. Read it, discuss the takeaways, write or update pages, update the index, log the action, and archive or purge the original. Use whenever the user drops a file or photo in inbox/ or says "ingest this".
 ---
 
 # Ingest
